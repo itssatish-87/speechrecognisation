@@ -1,0 +1,7 @@
+
+SpeechRecognition
+pydub
+torch
+torchaudio
+transformers
+librosa
