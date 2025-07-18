@@ -1,19 +1,17 @@
-
 import speech_recognition as sr
 
 def transcribe_audio(file_path):
     recognizer = sr.Recognizer()
     with sr.AudioFile(file_path) as source:
-        audio = recognizer.record(source)
+        audio = recognizer.record(source)  # read entire file
+
     try:
         text = recognizer.recognize_google(audio)
-        print("Transcription:", text)
-        return text
+        return f"Transcription: {text}"
     except sr.UnknownValueError:
-        print("Could not understand audio")
+        return "Could not understand the audio"
     except sr.RequestError as e:
-        print(f"Request failed: {e}")
+        return f"API Error: {e}"
 
 # Example usage
-if __name__ == "__main__":
-    transcribe_audio("hello.wav")
+print(transcribe_audio("hello.wav"))
